@@ -113,6 +113,17 @@ function checkMaybe<T>(
   return result.data;
 }
 
+// Запись без возврата строк (update без select): у такого запроса data всегда
+// null, поэтому проверяем только ошибку
+function checkWrite(
+  result: { error: { message: string } | null },
+  what: string,
+): void {
+  if (result.error) {
+    throw new Error(`${what}: ${result.error.message}`);
+  }
+}
+
 // То же, но данные обязаны быть
 function check<T>(
   result: { data: T; error: { message: string } | null },
@@ -218,14 +229,14 @@ export function createSupabaseStore(db: SupabaseClient): Store {
     },
 
     async setEntryStatus(entryId, status) {
-      check(
+      checkWrite(
         await db.from("entries").update({ status }).eq("id", entryId),
         "Не удалось обновить ввод",
       );
     },
 
     async setEntryMessage(entryId, botMessageId) {
-      check(
+      checkWrite(
         await db.from("entries").update({ bot_message_id: botMessageId }).eq(
           "id",
           entryId,
@@ -368,7 +379,9 @@ export function createSupabaseStore(db: SupabaseClient): Store {
         db.from("reminders").update({ active: false }).eq("entry_id", entryId),
         db.from("entries").update({ status: "undone" }).eq("id", entryId),
       ]);
-      for (const result of results) check(result, "Не удалось отменить запись");
+      for (const result of results) {
+        checkWrite(result, "Не удалось отменить запись");
+      }
     },
 
     async getTransaction(transactionId) {
@@ -381,7 +394,7 @@ export function createSupabaseStore(db: SupabaseClient): Store {
     },
 
     async setTransactionCategory(transactionId, categoryId) {
-      check(
+      checkWrite(
         await db.from("transactions").update({ category_id: categoryId }).eq(
           "id",
           transactionId,

@@ -349,7 +349,13 @@ export function createBot(
         : undefined,
     });
     if (result.entryId) {
-      await store.setEntryMessage(result.entryId, sent.message_id);
+      // Запись уже сохранена и подтверждение отправлено. Если упасть здесь,
+      // Telegram пришлёт сообщение снова и запись задвоится, поэтому только лог.
+      try {
+        await store.setEntryMessage(result.entryId, sent.message_id);
+      } catch (err) {
+        console.error(String(err));
+      }
     }
   });
 
