@@ -12,7 +12,12 @@ const ALLOWED_UPDATES = [
 
 // Команды в меню бота: добавляются по мере того, как появляются в коде
 const COMMANDS = [
-  { command: "start", description: "Начать" },
+  { command: "today", description: "План и траты на сегодня" },
+  { command: "week", description: "События на 7 дней" },
+  { command: "stats", description: "Траты за месяц по категориям" },
+  { command: "settings", description: "Часовой пояс, сводка, валюта" },
+  { command: "help", description: "Примеры фраз" },
+  { command: "start", description: "Начать сначала" },
 ];
 
 const api = new Api(requireEnv("TELEGRAM_BOT_TOKEN"));

@@ -2,9 +2,14 @@
   "version": "5",
   "specifiers": {
     "jsr:@std/assert@1.0.19": "1.0.19",
+    "jsr:@std/cli@1.0.32": "1.0.32",
     "jsr:@std/internal@^1.0.12": "1.0.14",
     "npm:@supabase/supabase-js@2.118.0": "2.118.0",
-    "npm:grammy@1.46.0": "1.46.0"
+    "npm:date-fns-tz@3.2.0": "3.2.0_date-fns@4.4.0",
+    "npm:date-fns@4.4.0": "4.4.0",
+    "npm:grammy@1.46.0": "1.46.0",
+    "npm:rrule@2.8.1": "2.8.1",
+    "npm:zod@4.6.7": "4.6.7"
   },
   "jsr": {
     "@std/assert@1.0.19": {
@@ -12,6 +17,9 @@
       "dependencies": [
         "jsr:@std/internal"
       ]
+    },
+    "@std/cli@1.0.32": {
+      "integrity": "188b3a100d6202d64e3f5bd3d799c7fa4f6d77f92cc65eb7f641c1fa0aa92a66"
     },
     "@std/internal@1.0.14": {
       "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
@@ -72,6 +80,15 @@
         "event-target-shim"
       ]
     },
+    "date-fns-tz@3.2.0_date-fns@4.4.0": {
+      "integrity": "sha512-sg8HqoTEulcbbbVXeg84u5UnlsQa8GS5QXMqjjYIhS4abEVVKIUwe0/l/UhrZdKaL/W5eWZNlbTeEIiOXTcsBQ==",
+      "dependencies": [
+        "date-fns"
+      ]
+    },
+    "date-fns@4.4.0": {
+      "integrity": "sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w=="
+    },
     "debug@4.4.3": {
       "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
       "dependencies": [
@@ -102,6 +119,12 @@
         "whatwg-url"
       ]
     },
+    "rrule@2.8.1": {
+      "integrity": "sha512-hM3dHSBMeaJ0Ktp7W38BJZ7O1zOgaFEsn41PDk+yHoEtfLV+PoJt9E9xAlZiWgf/iqEqionN0ebHFZIDAp+iGw==",
+      "dependencies": [
+        "tslib"
+      ]
+    },
     "tr46@0.0.3": {
       "integrity": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw=="
     },
@@ -117,13 +140,21 @@
         "tr46",
         "webidl-conversions"
       ]
+    },
+    "zod@4.6.7": {
+      "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg=="
     }
   },
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1.0.19",
+      "jsr:@std/cli@1.0.32",
       "npm:@supabase/supabase-js@2.118.0",
-      "npm:grammy@1.46.0"
+      "npm:date-fns-tz@3.2.0",
+      "npm:date-fns@4.4.0",
+      "npm:grammy@1.46.0",
+      "npm:rrule@2.8.1",
+      "npm:zod@4.6.7"
     ]
   }
 }
